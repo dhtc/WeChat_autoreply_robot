@@ -45,17 +45,17 @@ def text_reply(msg):
 #     return '@%s@%s' % ({'Picture': 'img', 'Video': 'vid'}.get(msg['Type'], 'fil'), msg['FileName'])
 
 
-black_list=['乳','奶','van','肚','傻']
+black_list=['']
 @itchat.msg_register([TEXT,MAP,CARD,NOTE,SHARING], isGroupChat=True)
 def group_text_reply(msg):
 
     # with open('msg.txt','ab')as f:
     #     f.write(str(msg).encode('utf-8'))
     vg = group_id('VG')
-    houyuanhui=group_id('红姐全球后援会')
-    xiangqinxiangaiyijiaren=group_id('相亲相爱一家人')
-    yijiaren=group_id('一家人')
-    xiaoerban=group_id('小2班')
+    houyuanhui=group_id('')
+    xiangqinxiangaiyijiaren=group_id('')
+    yijiaren=group_id('')
+    xiaoerban=group_id('')
     if (msg['FromUserName'] == vg): #and msg['IsAt']==True) :
 
         sender_actualname=msg['ActualUserName']
@@ -66,24 +66,12 @@ def group_text_reply(msg):
         sender_nickname=pattern1.findall(users)
         reciver_nickname=pattern2.findall(users)
 
-        # if sender_nickname=='姚舜禹':
-        #     h=[]
-        #     for b in black_list:
-        #         r=str(msg['Text']).find(b)
-        #         if r!=-1:
-        #             h.append(True)
-        #     if numpy.any(h):
-        #         itchat.send(u'就是姚大傻啊。姚大傻爱吃屎。' , msg['FromUserName'])
-        #     else:
-        #         itchat.send(u'%s。' % reply, msg['FromUserName'])
-        # else:
-        #     h=[]
         for b in black_list:
             r=str(msg['Text']).find(b)
             if r!=-1:
                 h.append(True)
             if numpy.any(h):
-                itchat.send(u'就是姚大傻啊。姚大傻爱吃屎。' , msg['FromUserName'])
+                itchat.send(u'haha' , msg['FromUserName'])
             else:
                 if(msg['IsAt']==True):
                     itchat.send(u'%s' % reply, msg['FromUserName'])
